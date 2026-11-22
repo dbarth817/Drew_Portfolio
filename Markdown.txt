@@ -1,0 +1,70 @@
+/plan Audit my existing local website repository in this workspace and build/upgrade the site into a finished, polished static personal website ready for GitHub Pages deployment at drewsbarth.com.
+
+### 1. Workspace Audit, Content Source & Preservation Rules (CRITICAL)
+- **Inspect Existing Files & Resume First:** Before creating or overwriting anything, read all existing files in the repository (`index.html`, CSS/JS files, `CNAME`, `.nojekyll`, `resume.pdf`, and everything inside `./assets/`, `./images/`, and `./assets/icons/`).
+- **Use `resume.pdf` as Copy Source:** Extract accurate career history, engineering credentials, technical skills, software/technical tools, and education details directly from `resume.pdf` to populate the site text rather than using generic placeholder text.
+- **Preserve Live GitHub Pages Config:** Do NOT delete or alter `CNAME` (`drewsbarth.com`) or `.nojekyll`. Preserve all existing local image filenames and wire them cleanly using exact case-sensitive relative paths.
+- **No Unapproved Git Pushes:** Do NOT run `git commit` or `git push`. Leave all changes uncommitted in my local working tree so I can review `git diff` and inspect the live local preview before pushing to GitHub.
+
+### 2. Theme & Global Spacing Defaults
+- **Default to Night (Dark) Mode:** Set **night (Dark) mode** as the default theme on initial page load whenever a visitor arrives without a saved `localStorage` preference (regardless of OS `prefers-color-scheme`), applying it immediately in the `<head>` to prevent any flash of light theme. Keep a functional header theme toggle button that allows switching to daytime (Light) mode and persists the user's choice in `localStorage`.
+- **Compact Section Spacing:** Use tight, balanced vertical spacing between main page sections (`#about`, `#skills`, `#experience`, `#education`, `#contact`)—roughly half of standard spacious section padding—while preserving comfortable internal card padding.
+
+### 3. Page Layout & Section Architecture
+Build a single-page semantic site with a **Sticky Navigation Bar** containing the brand/name anchor (`Drew Barth, PE`), smooth-scroll links (`About`, `Skills`, `Experience`, `Education`, `Contact`), the persistent Dark/Light theme toggle, and a responsive mobile menu drawer:
+
+1. **Hero / About (`#about` — Two-Column):**
+   - **Left Column:** Display `Drew_Suit.png`.
+   - **Right Column:** Main hero headline, concise professional summary sourced from `resume.pdf`, primary CTA (`Get in Touch`), and key credential/experience stat cards (do **NOT** include a Download Resume button):
+     - Under **22+ Years**, display strictly `Project Delivery`.
+     - Under **Purdue University**, display two stacked lines:
+       - `B.S. Civil Engineering`
+       - `B.S. Land Survey Engineering`
+
+2. **Capabilities / Skills & Expertise (`#skills` — Shared Two-Row, Two-Column Desktop Grid):**
+   - Structure `#skills` on desktop (`1440px+`) as a 2-column, 2-row CSS Grid (`grid-template-columns: 1fr 1fr; align-items: stretch;`) so both rows lock onto exact horizontal tracks (collapsing cleanly to a single vertical column on mobile):
+     - **Top-Left Cell — Transportation & Infrastructure Delivery:** List all competencies in a **single vertical column** (no multi-column wrapping), and include **Construction Inspection** directly beneath **Plans, Specifications & Estimates (PS&E)**.
+     - **Top-Right Cell — Image:** Display `Drew_Skills.webp` with its top edge aligned flush with the top edge of **Transportation & Infrastructure Delivery**.
+     - **Bottom-Left Cell — Leadership, QA/QC & Coordination:** List all competencies in a **single vertical column**, with its top edge aligned flush with **Technical Tools & Software** on the right.
+     - **Bottom-Right Cell — Technical Tools & Software:** Render a taller, well-proportioned card whose top edge aligns flush with **Leadership, QA/QC & Coordination** and whose bottom edge aligns flush along the bottom of the section. Arrange the software items in a balanced **two-column** icon-bulleted list (`list-style: none` with flex-aligned `20px–24px` icons and consistent spacing between items). Place **ProjectWise** directly between **Microsoft Office Suite** and **AutoTURN**, and map the exact local logo files from `./assets/icons/`:
+       - **MicroStation**, **Bentley OpenBridge**, and **Bentley OpenRoads** → `./assets/icons/Bentley.jpg`
+       - **Bluebeam Revu** → `./assets/icons/Bluebeam.png`
+       - **AutoTURN** → `./assets/icons/AutoTurn.png`
+       - **AASHTOWare** → `./assets/icons/ASHTO.png`
+       - **AutoCAD Civil 3D** → `./assets/icons/Civil_3D.png`
+       - **ProjectWise** → `./assets/icons/ProjectWise.jpg`
+       - Any remaining software without a dedicated icon in `./assets/icons/` → fallback to `Drew_Avatar.png`.
+
+3. **Career Track / Experience (`#experience`):**
+   - Present structured career leadership and project delivery highlights sourced from `resume.pdf` (do **NOT** include a "3D Concept to Completed Infrastructure" heading or subtext).
+   - **Inline Interactive Before/After Comparison Sliders:** Build an accessible drag/swipe comparison slider component (supporting mouse drag, touch swipe without horizontal page scroll, and keyboard arrow keys) with subtle "3D Concept" and "Completed Project" labels, placed directly inline between the experience cards:
+     - **Between RS&H and DLZ Corporation:** Place the **Franklin County Bridges 110 & 111** comparison slider (`3D_Bridge 110 & 111.jpg` stacked over `Final 110 & 111.jpg`).
+     - **Between Landwater Group, Inc. and Dynasty Group, Inc.:** Place the **Collier Ridge Road Slide Correction & Roadway Improvements** comparison slider (`3D_Collier Ridge.jpg` stacked over `Final Collier Ridge.jpg`).
+   - **Bottom Card Height Alignment:** Extend the height (bottom space) of the **Howard J. Barth & Associates, Inc.** box so its bottom edge aligns flush with the bottom edge of the **Dynasty Group, Inc.** box on desktop (`1440px+`), while keeping the text inside **Howard J. Barth & Associates, Inc.** anchored at the top in its normal position.
+
+4. **Academic & Licensure / Education (`#education` — Two-Column):**
+   - **Left Column:** Place the **Education — Purdue University (West Lafayette, IN)** box at the top, and place `Drew_Graduation.jpg` directly beneath it.
+   - **Right Column:** Place the licensure/certification boxes on the right so that on desktop (`1440px+`):
+     - The top edge of the top-right box aligns horizontally with the top edge of **Education — Purdue University (West Lafayette, IN)** on the left.
+     - The top edge of `Drew_Graduation.jpg` (left) aligns horizontally with the top edge of the **Leadership, Affiliations & Honors** box on the right.
+
+5. **Connect / Contact (`#contact`):**
+   - Inside the **Connect** box, arrange the layout as a horizontal flex row without increasing the box's height or outer dimensions:
+     - **Left Side:** Heading/contact text and a single **LinkedIn** button featuring a **LinkedIn logo icon** (do **NOT** include Copy Email or GitHub buttons).
+     - **Far Right Side:** Display `Drew_Construction.gif` (located in the workspace's images/assets folder), constrained (`max-height` matching the inner content height of the Connect box, `width: auto`, `object-fit: contain`) so it fits cleanly inside the current Connect box without expanding the card height.
+
+6. **Custom 404 Page (`404.html`):**
+   - Create or update `404.html` matching the dark-default site design and routing cleanly back to `./index.html`.
+
+### 4. Technical & Responsive Standards
+- **Zero-Build Static Architecture:** Semantic HTML5, modular CSS3 (Custom Properties, Grid, Flexbox), and vanilla ES6+ JavaScript (`defer`) with strictly relative paths (`./css/...`, `./js/...`, `./assets/...`). Ensure all image `src` attributes match exact case-sensitive filenames on disk and properly URL-encode spaces and `&` characters (`%20`, `%26`) so Linux-hosted GitHub Pages loads every file cleanly.
+- **Responsive Viewports:** Fluid, zero-overflow layouts across mobile (`375px`), tablet (`768px`), and desktop (`1440px+`).
+- **Accessibility & Polish:** WCAG AA contrast in both Dark and Light themes, keyboard focus indicators, descriptive `alt` attributes, and subtle scroll animations respecting `prefers-reduced-motion`.
+
+### 5. Local Review & Verification Gate (Before Git Push)
+After building the site, complete these checks and present the results in the Walkthrough artifact:
+1. Start (or keep running) the local static preview server and provide the exact `http://localhost:...` URL in your final response so I can inspect the site in my browser before committing or pushing to GitHub.
+2. Run `/browser` (with cleared `localStorage`) to verify:
+   - The site loads in **night (Dark) mode** by default and toggles cleanly to Light mode.
+   - Zero 404 network errors across all local images, `./assets/icons/*` software logos, and `Drew_Construction.gif`.
+   - Desktop (`1440x900`) horizontal row/bottom alignments across `#skills`, `#experience`, `#education`, and `#contact`, plus clean vertical stacking on mobile (`390x844`) with zero console errors.
