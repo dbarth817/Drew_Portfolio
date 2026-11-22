@@ -26,20 +26,29 @@ Build a single-page semantic site with a **Sticky Navigation Bar** containing th
      - **Top-Left Cell — Transportation & Infrastructure Delivery:** List all competencies in a **single vertical column** (no multi-column wrapping), and include **Construction Inspection** directly beneath **Plans, Specifications & Estimates (PS&E)**.
      - **Top-Right Cell — Image:** Display `Drew_Skills.webp` with its top edge aligned flush with the top edge of **Transportation & Infrastructure Delivery**.
      - **Bottom-Left Cell — Leadership, QA/QC & Coordination:** List all competencies in a **single vertical column**, with its top edge aligned flush with **Technical Tools & Software** on the right.
-     - **Bottom-Right Cell — Technical Tools & Software:** Render a taller, well-proportioned card whose top edge aligns flush with **Leadership, QA/QC & Coordination** and whose bottom edge aligns flush along the bottom of the section. Arrange the software items in a balanced **two-column** icon-bulleted list (`list-style: none` with flex-aligned `20px–24px` icons and consistent spacing between items). Place **ProjectWise** directly between **Microsoft Office Suite** and **AutoTURN**, and map the exact local logo files from `./assets/icons/`:
-       - **MicroStation**, **Bentley OpenBridge**, and **Bentley OpenRoads** → `./assets/icons/Bentley.jpg`
-       - **Bluebeam Revu** → `./assets/icons/Bluebeam.png`
-       - **AutoTURN** → `./assets/icons/AutoTurn.png`
-       - **AASHTOWare** → `./assets/icons/ASHTO.png`
-       - **AutoCAD Civil 3D** → `./assets/icons/Civil_3D.png`
-       - **ProjectWise** → `./assets/icons/ProjectWise.jpg`
-       - Any remaining software without a dedicated icon in `./assets/icons/` → fallback to `Drew_Avatar.png`.
+     - **Bottom-Right Cell — Technical Tools & Software:** Render a taller, well-proportioned card whose top edge aligns flush with **Leadership, QA/QC & Coordination** and whose bottom edge aligns flush along the bottom of the section. Arrange the software items in a balanced **two-column** icon-bulleted list (`list-style: none` with flex-aligned `20px–24px` icons and consistent spacing between items) reflecting the exact updated sequence and icon mappings:
+       - Include **Adobe Acrobat** (`./assets/icons/Adobe.jpg`) and **SharePoint** (`./assets/icons/SharePoint.png`) alongside the existing software tools.
+       - Apply the cumulative item order swaps so that:
+         - **ProjectWise** and **Bluebeam Revu** were swapped from their original slots;
+         - **AutoCAD Civil 3D** and **Microsoft Office Suite** were swapped from their original slots;
+         - **Bluebeam Revu** and **AutoTURN** were swapped, then **Bluebeam Revu** and **Python** were swapped, then **Bluebeam Revu** and **SharePoint** were swapped, and finally **Bluebeam Revu** and **SharePoint** were swapped again while **AutoTURN** and **AASHTOWare** were swapped (resulting in **AutoCAD Civil 3D** positioned between **Microsoft Office Suite** and **AASHTOWare**; **Bluebeam Revu** positioned where **ProjectWise** was originally placed; **SharePoint** positioned where **Python** was originally placed; **ProjectWise** positioned where **AutoTURN** was originally placed; **AutoTURN** positioned where **AASHTOWare** was originally placed; **Python** positioned where **Bluebeam Revu** was originally placed; and **Adobe Acrobat** included in the list).
+       - Map the exact local logo files from `./assets/icons/`:
+         - **MicroStation**, **Bentley OpenBridge**, and **Bentley OpenRoads** → `./assets/icons/Bentley.jpg`
+         - **ProjectWise** → `./assets/icons/ProjectWise.jpg` (using the updated `ProjectWise.jpg` file in `./assets/icons/`)
+         - **AutoCAD Civil 3D** → `./assets/icons/Civil_3D.png`
+         - **Bluebeam Revu** → `./assets/icons/Bluebeam.png`
+         - **AutoTURN** → `./assets/icons/AutoTurn.png`
+         - **AASHTOWare** → `./assets/icons/ASHTO.png`
+         - **Adobe Acrobat** → `./assets/icons/Adobe.jpg`
+         - **SharePoint** → `./assets/icons/SharePoint.png`
+         - Any remaining software without a dedicated icon in `./assets/icons/` (such as **Microsoft Office Suite** or **Python**) → fallback to `Drew_Avatar.png`.
 
 3. **Career Track / Experience (`#experience`):**
    - Present structured career leadership and project delivery highlights sourced from `resume.pdf` (do **NOT** include a "3D Concept to Completed Infrastructure" heading or subtext).
+   - **Card Order (Swapped Landwater Group, Inc. & DLZ Corporation):** Swap the positions of the **Landwater Group, Inc.** box and the **DLZ Corporation** box so **Landwater Group, Inc.** appears above **DLZ Corporation** (where **DLZ Corporation** originally appeared), and **DLZ Corporation** appears below **Landwater Group, Inc.** (where **Landwater Group, Inc.** originally appeared).
    - **Inline Interactive Before/After Comparison Sliders:** Build an accessible drag/swipe comparison slider component (supporting mouse drag, touch swipe without horizontal page scroll, and keyboard arrow keys) with subtle "3D Concept" and "Completed Project" labels, placed directly inline between the experience cards:
-     - **Between RS&H and DLZ Corporation:** Place the **Franklin County Bridges 110 & 111** comparison slider (`3D_Bridge 110 & 111.jpg` stacked over `Final 110 & 111.jpg`).
-     - **Between Landwater Group, Inc. and Dynasty Group, Inc.:** Place the **Collier Ridge Road Slide Correction & Roadway Improvements** comparison slider (`3D_Collier Ridge.jpg` stacked over `Final Collier Ridge.jpg`).
+     - **Between RS&H and Landwater Group, Inc.:** Place the **Franklin County Bridges 110 & 111** comparison slider (`3D_Bridge 110 & 111.jpg` stacked over `Final 110 & 111.jpg`).
+     - **Between DLZ Corporation and Dynasty Group, Inc.:** Place the **Collier Ridge Road Slide Correction & Roadway Improvements** comparison slider (`3D_Collier Ridge.jpg` stacked over `Final Collier Ridge.jpg`).
    - **Bottom Card Height Alignment:** Extend the height (bottom space) of the **Howard J. Barth & Associates, Inc.** box so its bottom edge aligns flush with the bottom edge of the **Dynasty Group, Inc.** box on desktop (`1440px+`), while keeping the text inside **Howard J. Barth & Associates, Inc.** anchored at the top in its normal position.
 
 4. **Academic & Licensure / Education (`#education` — Two-Column):**
@@ -66,5 +75,5 @@ After building the site, complete these checks and present the results in the Wa
 1. Start (or keep running) the local static preview server and provide the exact `http://localhost:...` URL in your final response so I can inspect the site in my browser before committing or pushing to GitHub.
 2. Run `/browser` (with cleared `localStorage`) to verify:
    - The site loads in **night (Dark) mode** by default and toggles cleanly to Light mode.
-   - Zero 404 network errors across all local images, `./assets/icons/*` software logos, and `Drew_Construction.gif`.
+   - Zero 404 network errors across all local images, `./assets/icons/*` software logos (including updated `ProjectWise.jpg`, `Adobe.jpg`, and `SharePoint.png`), and `Drew_Construction.gif`.
    - Desktop (`1440x900`) horizontal row/bottom alignments across `#skills`, `#experience`, `#education`, and `#contact`, plus clean vertical stacking on mobile (`390x844`) with zero console errors.
